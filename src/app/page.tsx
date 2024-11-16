@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div>
-      {/* <h1>React application architecture</h1> */}
+      <h1>This is Home page</h1>
     </div>
   );
 }
