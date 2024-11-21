@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import { TopNavigation } from "./topNavigation";
+import { TopNavigation } from "./top-navigation";
 
 export const Header: React.FC = () => {
   return (
