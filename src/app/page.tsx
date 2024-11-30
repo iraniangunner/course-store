@@ -1,6 +1,8 @@
 import { CourseSummary } from "@/types/course-summary.interface";
+import { BlogPostSummary } from "@/types/blog-post-summary.interface";
 import { HomeHeroSection } from "./_components/home-hero-section/home-hero-section";
 import { CourseCardList } from "./(courses)/_components/course-card-list";
+import { BlogPostCardList } from "./(blog)/_components/blog-post-card-list";
 import { homeFeatures } from "@/data/home-features";
 import Feature from "./_components/feature/feature";
 import { Button } from "./_components/button";
@@ -15,8 +17,18 @@ async function getNewestCourses(count: number): Promise<CourseSummary[]> {
   );
   return res.json();
 }
+
+async function getNewestPosts(count: number): Promise<BlogPostSummary[]> {
+  const res = await fetch(`https://api.classbon.com/api/blog/newest/${count}`);
+  return res.json();
+}
 export default async function Home() {
-  const newestCourses = await getNewestCourses(4);
+  const newestCoursesData = getNewestCourses(4);
+  const newestBlogPostsData = getNewestPosts(4);
+  const [newestCourses, newestBlogPosts] = await Promise.all([
+    newestCoursesData,
+    newestBlogPostsData,
+  ]);
   return (
     <>
       <HomeHeroSection />
@@ -37,7 +49,6 @@ export default async function Home() {
         <CourseCardList courses={newestCourses} />
       </section>
       <section className="px-2 my-40">
-        {/* <div className="sticky top-0 pt-0 text-center"> */}
         <div className="relative pt-0 text-center">
           <div className="bg-primary pointer-events-none absolute left-1/2 aspect-square w-1/2 -translate-x-1/2 -top-96 rounded-full opacity-10 blur-3xl"></div>
 
@@ -73,6 +84,28 @@ export default async function Home() {
             </Button>
           </div>
         </div>
+      </section>
+      <section className="container py-20">
+        <div className="flex flex-col xl:flex-row gap-4 justify-center xl:justify-between items-center">
+          <div className="text-center xl:text-right">
+            <h2 className="text-2xl font-extrabold">
+              تازه‌ترین مقاله‌های آموزشی
+            </h2>
+            <p className="mt-3 text-lg">
+              به رایگان، به‌روزترین مقاله‌های دنیای تکنولوژی رو در اختیارت
+              می‌ذاریم؛ چون پیشرفتت برامون مهمه!
+            </p>
+          </div>
+          <Button
+            variant="neutral"
+            className="font-semibold"
+            animatedIcon={true}
+          >
+            همه مقاله‌ها
+            <IconArrowLeftFill fill="currentColor" />
+          </Button>
+        </div>
+        <BlogPostCardList posts={newestBlogPosts} />
       </section>
     </>
   );
