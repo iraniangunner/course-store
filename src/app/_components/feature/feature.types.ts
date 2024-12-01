@@ -1,3 +1,3 @@
 export type FeatureProps = {
-    feature: Feature
-}
+  feature: Feature;
+};

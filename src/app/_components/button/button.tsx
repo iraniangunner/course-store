@@ -1,4 +1,3 @@
-"use client";
 import classNames from "classnames";
 import { ButtonProps, ButtonShape } from "./button.types";
 import { Loading } from "../loading";

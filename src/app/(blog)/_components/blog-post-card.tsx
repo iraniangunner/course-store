@@ -9,7 +9,7 @@ import {
   IconComment,
   IconEye,
   IconUserProfile,
-} from "@/app/_components/icons/icons";
+} from "@/app/_components/icons";
 
 export type BlogPostCardProps = BlogPostSummary & {};
 

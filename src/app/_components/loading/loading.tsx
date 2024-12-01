@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Size } from "../types/size.type";
 import { LoadingProps } from "./loading.types";
