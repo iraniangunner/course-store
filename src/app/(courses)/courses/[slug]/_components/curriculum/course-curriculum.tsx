@@ -23,11 +23,11 @@ export const CourseCurriculum: React.FC<CourseCurriculumProps> = ({ data }) => {
                 index === activeIndex ? " text-white " : "text-base-content"
               }`}
             >
-              <span className="h-6 w-6  drop-shadow-md rounded-full flex items-center justify-center font-bold text-sm ml-2 bg-base-content/10">
+              <span className="h-6 w-6 drop-shadow-md rounded-full flex items-center justify-center font-bold text-sm ml-2 bg-base-content/10">
                 {index}
               </span>
               <span className="ml-auto">{chapter.title}</span>
-              <div className="flex gap-2 ml-3">
+              <div className="hidden md:flex gap-2 ml-3">
                 <Badge variant="info">{chapter.numOfLectures} مبحث </Badge>
                 <Badge variant="accent">{chapter.duration} </Badge>
               </div>
