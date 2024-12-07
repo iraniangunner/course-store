@@ -34,9 +34,10 @@ async function getCurriculum(slug: string): Promise<CourseChapter[]> {
 export default async function CourseDetails({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const courseData = getCourse(slug);
   const courseCurriculumData = getCurriculum(slug);
 

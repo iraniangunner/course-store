@@ -1,12 +1,7 @@
-export default async function SinglePost({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+export default async function SinglePost() {
   return (
     <div>
-      <h1>{slug}</h1>
+      <h1>Slug</h1>
     </div>
   );
 }
