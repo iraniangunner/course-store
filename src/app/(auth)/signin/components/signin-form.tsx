@@ -1,4 +1,6 @@
 "use client";
+import { useEffect } from "react";
+import { useNotificationStore } from "@/stores/notification.store";
 import { Button } from "@/app/_components/button/button";
 import { SignIn } from "../types/signin.types";
 import { useForm } from "react-hook-form";
@@ -25,6 +27,17 @@ const SignInForm = () => {
   const onSubmit = (data: SignIn) => {
     signIn.submit(data);
   };
+
+  const showNotification = useNotificationStore(
+    (state) => state.showNotification
+  );
+
+  useEffect(() => {
+    showNotification({
+      type: "error",
+      message: "error",
+    });
+  }, []);
 
   return (
     <>
