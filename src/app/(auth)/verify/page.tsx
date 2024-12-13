@@ -1,7 +1,5 @@
-export default async function Verify() {
-  return (
-    <div>
-      <h1>This is verfiy page</h1>
-    </div>
-  );
+import VerificationForm from "./_components/verification-form";
+
+export default function Verify() {
+  return <VerificationForm />;
 }
