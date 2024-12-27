@@ -29,4 +29,6 @@ export const Textbox: React.FC<TextboxProps> = forwardRef<
   }
 );
 
+Textbox.displayName = "Textbox";
+
 export default Textbox;
